@@ -10,6 +10,7 @@ django = "==3.0.5"
 psycopg2 = "==2.8.4"
 django-crispy-forms = "==1.9.0"
 django-allauth = "==0.42.0"
+pillow = "==6.2.2"
 
 [requires]
 python_version = "3.7"
