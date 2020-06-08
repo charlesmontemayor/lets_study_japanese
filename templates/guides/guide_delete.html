@@ -1,12 +1,12 @@
 {% extends '_base.html' %}
 
-{% block title %}Guide Me | Delete Post{% endblock title %}
+{% block title %}Delete Guide{% endblock title %}
 
 {% block content %}
-<h2>Delete Post</h2>
+<h2>Delete Guide</h2>
 <form action="" method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete "{{ post.title }}"?</p>
+    <p>Are you sure you want to delete "{{ guide.title }}"?</p>
     <button class="btn btn-danger ml-2" type="submit">Confirm</button>
 </form>
 {% endblock content %}

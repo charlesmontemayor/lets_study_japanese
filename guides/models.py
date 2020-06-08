@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 
-class Post(models.Model):
+class Guide(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
@@ -17,4 +17,4 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
+        return reverse('guide_detail', args=[str(self.id)])

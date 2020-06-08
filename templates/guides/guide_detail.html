@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+
+{% block title %}Guides Details{% endblock title %}
+
+{% block content %}
+<div class="guide-entry">
+    <h2>{{ object.title }}</h2>
+    <p>by {{ object.author }} | {{ object.date }}</p>
+    <p>{{ object.body }}</p>
+</div>
+<p><a href="{% url 'guide_edit' guide.pk %}">Edit</a> | <a href="{% url 'guide_delete' guide.pk %}">Delete</a></p>
+<p>Back to <a href="{% url 'guide_list' %}">All Guides</a>.</p>
+{% endblock content %}

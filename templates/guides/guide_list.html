@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+
+{% block title %}Lists Of Guides{% endblock title %}
+
+{% block content %}
+    {% for guide in object_list %}
+        <div>
+            <h2><a href="{% url 'guide_detail' guide.pk %}">{{ guide.title }}</a></h2>
+        </div>
+    {% endfor %}
+{% endblock content %}
