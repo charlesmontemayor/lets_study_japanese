@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+
+{% block title %}Guide Me{% endblock title %}
+
+{% block content %}
+    {% for post in object_list %}
+        <div>
+            <h2><a href="">{{ post.title }}</a></h2>
+        </div>
+    {% endfor %}
+{% endblock content %}

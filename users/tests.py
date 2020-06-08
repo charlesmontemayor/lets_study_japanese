@@ -45,7 +45,7 @@ class SignupTests(TestCase):
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, 'account/signup.html')
         self.assertContains(self.response, 'Sign Up')
-        self.assertNotContains(self.response, 'Hi there! I should not be on the page.')
+        self.assertNotContains(self.response, 'Hi there! I should not be on this page.')
 
     def test_signup_form(self):
         new_user = get_user_model().objects.create_user(self.username, self.email)
