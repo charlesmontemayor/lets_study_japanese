@@ -13,6 +13,9 @@ class Guide(models.Model):
         on_delete=models.CASCADE,
     )
 
+    class Meta():
+        ordering = ['-date']
+
     def __str__(self):
         return self.title
 

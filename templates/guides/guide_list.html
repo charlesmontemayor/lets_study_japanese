@@ -3,9 +3,27 @@
 {% block title %}Lists Of Guides{% endblock title %}
 
 {% block content %}
-    {% for guide in object_list %}
-        <div>
-            <h2><a href="{% url 'guide_detail' guide.pk %}">{{ guide.title }}</a></h2>
+    {% if user.is_authenticated %}
+    <div>
+        <a class="btn btn-info btn-lg btn-block" href="{% url 'guide_new' %}">New</a>
+    </div>
+    <br>
+    {% endif %}
+
+    {% for guide in guide_list %}
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold"><a href="{{ guide.get_absolute_url }}">{{ guide.title }}</a></span>
+                <span class="text-muted">by {{ guide.author }} | {{ guide.date }}</span>
+            </div>
+            <div class="card-body">
+                {{ guide.body|truncatewords:25 }}
+            </div>
+            <div class="card-footer text-center text-muted">
+                <a href="{% url 'guide_edit' guide.pk %}">Edit</a> | 
+                <a href="{% url 'guide_delete' guide.pk %}">Delete</a>
+            </div>
         </div>
+        <br />
     {% endfor %}
 {% endblock content %}
