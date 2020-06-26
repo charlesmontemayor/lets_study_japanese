@@ -21,7 +21,7 @@ class GuideTests(TestCase):
             author=self.user,
         )
 
-        self.login = self.client.login(
+        login = self.client.login(
             username='testuser',
             password='testpassword'
         )
@@ -59,6 +59,8 @@ class GuideTests(TestCase):
         response = self.client.post(reverse('guide_new'), {
             'title': 'New Title',
             'body': 'New body',
+            'date': datetime.now(),
+            'author': self.user
         })
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'New Title')
