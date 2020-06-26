@@ -65,3 +65,4 @@ class GuideTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'New Title')
         self.assertContains(response, 'New body')
+
