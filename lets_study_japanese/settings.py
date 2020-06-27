@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'embed_video',
 
     # Local Apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'guides.apps.GuidesConfig',
+    'videos.apps.VideosConfig',
 ]
 
 MIDDLEWARE = [
