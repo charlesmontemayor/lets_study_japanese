@@ -4,10 +4,16 @@
 {% block title %}Inspire Me{% endblock title %}
 
 {% block content %}
-    {% for video in video_list %}
-    <div>
-        {{ video.title }}
-        {% video video.video 'small' %}
-    </div>
-    {% endfor %}
+    <h2>Video Guides & Inspiration</h2>
+
+    <table class="table">
+        {% for video in video_list %}
+        <tr>
+            {% video video.video as my_video %}
+                <td><a href="{{ video.get_absolute_url }}">{{ video.title }}</a></td>
+                <td><img src="{{ my_video.thumbnail }}" width="60" height="45" class="img-rounded"></td>
+            {% endvideo %}       
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}

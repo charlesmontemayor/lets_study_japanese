@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a07e4bac82d60845bc80150a94972f4046e890104599231838ef0c2a097271a6"
+            "sha256": "b6f73910ed06d37531178fe4ee4b6b8ddfac502c127538e76133c054ac66c077"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -71,10 +71,11 @@
         },
         "django-embed-video": {
             "hashes": [
-                "sha256:a90f7de88528fd1bc155400dc23ea207884fa0d0514afe711f0703b2e7fa6208"
+                "sha256:7b5149c3ae51f78ddc7bd0e381f63beaf0aad30061815579d3a105e99a3ccbb2",
+                "sha256:ef59264ce1733743ccda329532161140cd975a4e291f01cd68c9b888c20288c0"
             ],
             "index": "pypi",
-            "version": "==1.2.0"
+            "version": "==1.3.3"
         },
         "idna": {
             "hashes": [
