@@ -10,4 +10,10 @@
     {% video video.video 'medium' %}
     <br />
     <a href="{% url 'video_list' %}" class="pull-right"><small>Back To Video Lists</small></a>
+    {% if user.is_authenticated %}
+    <div class="">
+        <a href="{% url 'video_edit' video.pk %}">Edit</a> | 
+        <a href="{% url 'video_delete' video.pk %}">Delete</a>
+    </div>
+    {% endif %}
 {% endblock content %}

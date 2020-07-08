@@ -3,13 +3,6 @@
 {% block title %}Lists Of Guides{% endblock title %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-    <div>
-        <a class="btn btn-info btn-lg btn-block" href="{% url 'guide_new' %}">New</a>
-    </div>
-    <br>
-    {% endif %}
-
     {% for guide in guide_list %}
         <div class="card">
             <div class="card-header">
@@ -19,11 +12,20 @@
             <div class="card-body">
                 {{ guide.body|truncatewords:25 }}
             </div>
-            <div class="card-footer text-center text-muted">
+            {% if user.is_authenticated %}
+            <div class="card-footer text-left text-muted">
                 <a href="{% url 'guide_edit' guide.pk %}">Edit</a> | 
                 <a href="{% url 'guide_delete' guide.pk %}">Delete</a>
             </div>
+            {% endif %}
         </div>
         <br />
     {% endfor %}
+
+    {% if user.is_authenticated %}
+    <div>
+        <a class="btn btn-info btn-md" href="{% url 'guide_new' %}">NEW</a>
+    </div>
+    <br>
+    {% endif %}
 {% endblock content %}

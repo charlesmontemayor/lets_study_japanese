@@ -11,24 +11,24 @@
         <tr>
             {% video video.video as my_video %}
                 <td><a href="{{ video.get_absolute_url }}">{{ video.title }}</a></td>
-                <td><img src="{{ my_video.thumbnail }}" width="60" height="45" class="img-rounded"></td>
-                {% if user.is_superuser %}
-                <td>
+                <td class="text-right"><img src="{{ my_video.thumbnail }}" width="60" height="45" class="img-rounded"></td>
+                {% if user.is_authenticated %}
+                <td class="text-right">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <button class="dropdown-item" type="button">Edit</button>
+                          <button class="dropdown-item" type="button"><a href="{% url 'video_edit' video.pk %}">Edit</a></button>
                           <button class="dropdown-item" type="button"><a href="{% url 'video_delete' video.pk %}">Delete</a></button>
                         </div>
                       </div>
                 </td>
                 {% endif %}
-            {% endvideo %}       
+            {% endvideo %}
         </tr>
         {% endfor %}
     </table>
 
-    {% if user.is_superuser %}
+    {% if user.is_authenticated %}
     <div>
         <a class="btn btn-info btn-md" href="{% url 'video_new' %}">NEW</a>
     </div>

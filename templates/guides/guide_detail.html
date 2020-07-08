@@ -8,6 +8,8 @@
     <p>by {{ guide.author }} | {{ guide.date }}</p>
     <p>{{ guide.body|linebreaks }}</p>
 </div>
-<p><a href="{% url 'guide_edit' guide.pk %}">Edit</a> | <a href="{% url 'guide_delete' guide.pk %}">Delete</a></p>
 <p>Back to <a href="{% url 'guide_list' %}">All Guides</a>.</p>
+{% if user.is_authenticated %}
+<p><a href="{% url 'guide_edit' guide.pk %}">Edit</a> | <a href="{% url 'guide_delete' guide.pk %}">Delete</a></p>
+{% endif %}
 {% endblock content %}
