@@ -5,6 +5,7 @@ services:
         build: .
         command: python /code/manage.py runserver 0.0.0.0:8000
         environment: 
+            - ENVIRONMENT=development
             - SECRET_KEY=i+invoxggkx_6m=mo8b67yavignu$$ld4r3uv31r^ow81*3bpmr
             - DEBUG=1
         volumes:
