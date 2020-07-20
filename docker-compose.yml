@@ -3,7 +3,7 @@ version: '3.7'
 services:
     web:
         build: .
-        command: python /code/manage.py runserver 0.0.0.0:8000
+        command: gunicorn lets_study_japanese.wsgi -b 0.0.0.0:8000
         environment: 
             - ENVIRONMENT=development
             - SECRET_KEY=i+invoxggkx_6m=mo8b67yavignu$$ld4r3uv31r^ow81*3bpmr
