@@ -29,6 +29,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 
     # Local Apps
+    path('forums/', include('forums.urls')),
     path('accounts/', include('users.urls')),
     path('', include('pages.urls')),
     path('guides/', include('guides.urls')),

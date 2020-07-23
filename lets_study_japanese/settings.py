@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'guides.apps.GuidesConfig',
     'videos.apps.VideosConfig',
+    'forums.apps.ForumsConfig',
 ]
 
 MIDDLEWARE = [
@@ -183,7 +184,7 @@ DEFAULT_FROM_EMAIL = 'admin@django.com'
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SECURE_HSTS_SECONDS = 3600
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True

@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block title %}Forum{% endblock title %}
+
+{% block content %}
+<div class="forum-entry">
+    <h2>{{ forum.title }}</h2>
+    <p>by {{ forum.author }} | {{ forum.date }}</p>
+    <p>{{ forum.body|linebreaks }}</p>
+</div>
+<p>Back to <a href="{% url 'forum_list' %}">Forum Page</a>.</p>
+{% if user.is_authenticated %}
+<p><a href="{% url 'forum_edit' forum.pk %}">Edit</a> | <a href="{% url 'forum_delete' forum.pk %}">Delete</a></p>
+{% endif %}
+{% endblock content %}
