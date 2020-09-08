@@ -1,12 +1,14 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
+
 {% block title %}User Forum List{% endblock title %}
 
 {% block content %}
 <h2>Forums</h2>
     <ul>
         {% for forum in forums_by_user %}
-        <li>{{ forum.title }} | {{ forum.user }}</li>
+        <li>{{ forum.title }} | {{ forum.user }} | {{ forum.date | naturaltime }}</li>
         {% endfor %}
     </ul>
 {% endblock content %}
