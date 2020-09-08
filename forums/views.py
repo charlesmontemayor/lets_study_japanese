@@ -3,6 +3,8 @@ from django.core.exceptions import PermissionDenied
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 from .models import Forum, Comment
 
@@ -27,7 +29,7 @@ class ForumUpdateView(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if obj.author != self.request.user:
+        if obj.user != self.request.user:
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
@@ -39,7 +41,7 @@ class ForumDeleteView(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if obj.author != self.request.user:
+        if obj.user != self.request.user:
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
 
@@ -50,5 +52,14 @@ class ForumCreateView(LoginRequiredMixin, CreateView):
     login_url = 'account_login'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
+
+class ForumUserListView(ListView):
+    model = Forum
+    template_name = 'forums/forum_by_user.html'
+    context_object_name = 'forums_by_user'
+    
+    def get_queryset(self):
+        self.request.user = get_object_or_404(get_user_model(), username=self.kwargs['username'])
+        return Forum.objects.filter(user = self.request.user)

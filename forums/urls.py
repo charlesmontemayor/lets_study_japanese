@@ -5,7 +5,8 @@ from .views import (
     ForumDetailView,
     ForumUpdateView,
     ForumDeleteView,
-    ForumCreateView
+    ForumCreateView,
+    ForumUserListView,
 )
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path('<uuid:pk>/edit/', ForumUpdateView.as_view(), name='forum_edit'),
     path('<uuid:pk>/delete/', ForumDeleteView.as_view(), name='forum_delete'),
     path('new/', ForumCreateView.as_view(), name='forum_new'),
+    path('by/<username>/', ForumUserListView.as_view(), name='forum_by_user'),
 ]

@@ -19,7 +19,7 @@ class Forum(models.Model):
         unique=True)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(
+    user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE
     )
