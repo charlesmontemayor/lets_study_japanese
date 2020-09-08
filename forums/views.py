@@ -55,7 +55,7 @@ class ForumCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class ForumUserListView(ListView):
+class ForumUserListView(LoginRequiredMixin, ListView):
     model = Forum
     template_name = 'forums/forum_by_user.html'
     context_object_name = 'forums_by_user'
