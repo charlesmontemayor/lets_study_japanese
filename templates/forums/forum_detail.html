@@ -8,5 +8,21 @@
     <p>by {{ forum.user }} | {{ forum.date }}</p>
     <p>{{ forum.body|linebreaks }}</p>
 </div>
+<br>
+<div class="">
+    <h4>Comments</h4>
+    <ul>
+        {% for comment in forum.comments.all %}
+        <li>{{ comment.comment }} ({{ comment.user }})</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if user.is_authenticated and user == forum.user %}
+    <div class="">
+        <a href="{% url 'forum_edit' forum.pk %}">Edit</a> | 
+        <a href="{% url 'forum_delete' forum.pk %}">Delete</a>
+    </div>
+{% endif %}
 <p>Back to <a href="{% url 'forum_list' %}">Forum Page</a>.</p>
 {% endblock content %}

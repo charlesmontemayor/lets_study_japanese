@@ -5,10 +5,11 @@
 {% block title %}User Forum List{% endblock title %}
 
 {% block content %}
-<h2>Forums</h2>
+<h2>Lists Of Forums by </h2>
     <ul>
         {% for forum in forums_by_user %}
-        <li>{{ forum.title }} | {{ forum.user }} | {{ forum.date | naturaltime }}</li>
+        <li><a href="{{ forum.get_absolute_url }}">{{ forum.title }}</a> | {{ forum.date | naturaltime }}</li>
         {% endfor %}
     </ul>
+<p>Back to <a href="{% url 'forum_list' %}">Forum Page</a>.</p>
 {% endblock content %}

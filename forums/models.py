@@ -41,7 +41,8 @@ class Forum(models.Model):
 class Comment(models.Model):
     forum = models.ForeignKey(
         Forum,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='comments',
     )
     user = models.ForeignKey(
         get_user_model(),
@@ -52,3 +53,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+    def get_absolute_url(self):
+        return reverse('forum_list')    

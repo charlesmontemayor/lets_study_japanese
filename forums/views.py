@@ -59,6 +59,7 @@ class ForumUserListView(LoginRequiredMixin, ListView):
     model = Forum
     template_name = 'forums/forum_by_user.html'
     context_object_name = 'forums_by_user'
+    login_url = 'account_login'
     
     def get_queryset(self):
         self.request.user = get_object_or_404(get_user_model(), username=self.kwargs['username'])

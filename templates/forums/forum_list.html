@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
+
 {% block title %}Forums{% endblock title %}
 
 {% block content %}
@@ -7,17 +9,11 @@
         <div class="card">
             <div class="card-header">
                 <span class="font-weight-bold"><a href="{{ forum.get_absolute_url }}">{{ forum.title }}</a></span>
-                <span class="text-muted">by <a href="{% url 'forum_by_user' forum.user %}">{{ forum.user }}</a> | {{ forum.date }}</span>
+                <span class="text-muted">by <a href="{% url 'forum_by_user' forum.user %}">{{ forum.user }}</a> | {{ forum.date | naturaltime }}</span>
             </div>
             <div class="card-body">
                 {{ forum.body|truncatewords:25 }}
             </div>
-            {% if user.is_authenticated and user == forum.user %}
-            <div class="card-footer text-left text-muted">
-                <a href="{% url 'forum_edit' forum.pk %}">Edit</a> | 
-                <a href="{% url 'forum_delete' forum.pk %}">Delete</a>
-            </div>
-            {% endif %}
         </div>
         <br />
     {% endfor %}
