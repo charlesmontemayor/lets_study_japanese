@@ -22,7 +22,7 @@ from pages.views import CustomPasswordChangeView
 
 urlpatterns = [
     # Django Admin
-    path('admin/', admin.site.urls),
+    path('admin-japanesestudy-mc/', admin.site.urls),
 
     # User Management
     path('accounts/password/change/', CustomPasswordChangeView.as_view(), name='account_password_change'),
